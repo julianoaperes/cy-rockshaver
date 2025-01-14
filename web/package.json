@@ -1,0 +1,24 @@
+{
+  "name": "web",
+  "packageManager": "yarn@4.5.3",
+  "type": "module",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "lint": "eslint cypress/**/*.js",
+    "format": "prettier --write \"**/*.{js,json,css,html,md}\"",
+    "number-tests": "node scripts/addTestCounters.js",
+    "cypress:run": "cross-env NODE_PATH=../node_modules cypress run",
+    "mocha-test": "MOCHA_FILE=./cypress/cy_reports/test-output.xml mocha --reporter mocha-junit-reporter ./cypress/e2e/ts01Login.cy.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "cross-env": "^7.0.3",
+    "cypress": "^13.17.0",
+    "cypress-xpath": "^2.0.1",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "mocha": "11.0.1",
+    "mocha-junit-reporter": "^2.2.1",
+    "ms": "^2.1.3"
+  }
+}
