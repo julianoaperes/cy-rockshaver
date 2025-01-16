@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="15.825" tests="8" failures="2">
+  <testsuite name="Root Suite" timestamp="2025-01-16T20:48:52" tests="0" file="cypress\e2e\ts01PreCadastro.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="1. Validation of &quot;Pré-cadastro&quot; scenarios" timestamp="2025-01-16T20:48:52" tests="8" time="15.821" failures="2">
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.1 Should do the pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the &apos;Entrar&apos; button" time="1.256" classname="1.1 Should do the pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the &apos;Entrar&apos; button">
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.2 Should pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the &apos;Agendar um horário&apos; button" time="1.974" classname="1.2 Should pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the &apos;Agendar um horário&apos; button">
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.3 The fields &quot;name&quot; and &quot;email&quot; should displays alert messages after submit, when the fields were empty" time="0.303" classname="1.3 The fields &quot;name&quot; and &quot;email&quot; should displays alert messages after submit, when the fields were empty">
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.4 &quot;Cancel&quot; button: Should cancel the pré-cadastro an return to the homepage" time="0.782" classname="1.4 &quot;Cancel&quot; button: Should cancel the pré-cadastro an return to the homepage">
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.5 &quot;Name&quot; field: Should not accept numbers" time="0.000" classname="1.5 &quot;Name&quot; field: Should not accept numbers">
+      <failure message="Timed out retrying after 4000ms: Expected to find content: &apos;Nome Completo&apos; within the selector: &apos;label&apos; but never did." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Nome Completo' within the selector: 'label' but never did.
+    at preCadastro.NameEmailAlertMsg (webpack://web/./cypress/support/actions/pre-cadastro.js:39:7)
+    at Context.eval (webpack://web/./cypress/e2e/ts01PreCadastro.cy.js:72:16)]]></failure>
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.6 &quot;Name&quot; field: Should not accept special characters" time="0.000" classname="1.6 &quot;Name&quot; field: Should not accept special characters">
+      <failure message="Timed out retrying after 4000ms: Expected to find content: &apos;Nome Completo&apos; within the selector: &apos;label&apos; but never did." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Nome Completo' within the selector: 'label' but never did.
+    at preCadastro.NameEmailAlertMsg (webpack://web/./cypress/support/actions/pre-cadastro.js:39:7)
+    at Context.eval (webpack://web/./cypress/e2e/ts01PreCadastro.cy.js:85:16)]]></failure>
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.7 &quot;Name&quot; field: Should display a validation message when typed only the first name" time="0.723" classname="1.7 &quot;Name&quot; field: Should display a validation message when typed only the first name">
+    </testcase>
+    <testcase name="1. Validation of &quot;Pré-cadastro&quot; scenarios 1.8 &quot;E-mail&quot; field: Should display a validation message when typed invalid data" time="0.647" classname="1.8 &quot;E-mail&quot; field: Should display a validation message when typed invalid data">
+    </testcase>
+  </testsuite>
+</testsuites>
