@@ -2,6 +2,7 @@
 import fs from 'fs'; // Provides filesystem-related functionalities, such as creating, reading, and writing files and directories.
 import path from 'path'; // Used to work with and manipulate file and directory paths.
 import { fileURLToPath } from 'url'; // Converts `import.meta.url` into a file path. Useful for ES Modules since `__dirname` is not available.
+import { configurePlugin } from 'cypress-mongodb'; // mongodb
 
 // Resolve the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -50,16 +51,20 @@ console.log(`Results directory created: ${resultsDir}`);
 
 export default {
   // Export the Cypress configuration object.
+  env: {
+    mongodb: {
+      uri: 'mongodb://cypress:skills@localhost:27017',
+      database: 'rockshaver',
+    },
+  },
   e2e: {
     // Defines the End-to-End (E2E) testing configuration.
     baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost:3000/',
     // Sets the base URL for the application under test. Falls back to 'http://localhost:3000/' if `CYPRESS_BASE_URL` is not set.
     viewportWidth: 1920, // Sets the width of the browser viewport to 1920 pixels.
     viewportHeight: 1080, // Sets the height of the browser viewport to 1080 pixels.
-
     reporter: path.resolve('../node_modules/mocha-junit-reporter'),
     // Specifies the test reporter. Uses the resolved path to the 'mocha-junit-reporter'.
-
     reporterOptions: {
       mochaFile: `cypress/cy_reports/${currentTimestamp}/cy-report.xml`,
       // Default path for the test report file. Includes the timestamp in the directory path.
@@ -71,6 +76,7 @@ export default {
       // Sets up Node.js event listeners for Cypress tests. `on` is used to listen to events, and `config` is the current test configuration.
       on('before:spec', (spec) => {
         // Listens for the 'before:spec' event, which is triggered before each spec file runs.
+        configurePlugin(on); // mongodb
         const dynamicPath = path.resolve(
           resultsDir,
           `${path.basename(spec.fileName, path.extname(spec.fileName))}.xml`

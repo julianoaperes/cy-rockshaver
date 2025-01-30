@@ -1,7 +1,7 @@
-import { customDescribeNumbered } from '../support/commands.mjs'; // Import the custom function to create numbered `describe` blocks from the commands.js file in the support folder of the project.
-import header from '../support/pages/components/header'; // Import the header object from the header.js file in the support/pages/components folder of the project.
-import homePage from '../support/pages/home.page'; // Import the homePage object from the home.page.js file in the support/pages folder of the project.
-import preCadastroPage from '../support/pages/pre-cadastro.page'; // Import the preCadastroPage object from the pre-cadastro.page.js file in the support/pages folder of the project.
+import { customDescribeNumbered } from '../../support/commands.mjs'; // Import the custom function to create numbered `describe` blocks from the commands.js file in the support folder of the project.
+import header from '../../support/pages/components/header'; // Import the header object from the header.js file in the support/pages/components folder of the project.
+import homePage from '../../support/pages/home.page'; // Import the homePage object from the home.page.js file in the support/pages folder of the project.
+import preCadastroPage from '../../support/pages/pre-cadastro.page'; // Import the preCadastroPage object from the pre-cadastro.page.js file in the support/pages folder of the project.
 // ***************************************************************
 // ! * TEST CASES: Pre-Cadastro (Pre-registration) *
 customDescribeNumbered('Validation of "Pré-cadastro" scenarios', (it) => {

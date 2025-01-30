@@ -1,11 +1,9 @@
+import { customDescribeNumbered } from '../../support/commands.mjs'; // Import the custom function to create numbered `describe` blocks from the commands.js file in the support folder of the project.
+import preCadastro from '../support/actions/pre-cadastro'; // Import the preCadastro object from the pre-cadastro.js file in the support/actions folder of the project.
 //! ********** TEST SUIT: Pre-Cadastro (Pre-registration) ***********
-describe('Validation of "Pré-cadastro" scenarios', () => {
+customDescribeNumbered('Validation of "Pré-cadastro" scenarios', (it) => {
   it("Should do the pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the 'Entrar' button", () => {
-    const user = {
-      fullname: 'Juliano Peres',
-      email: 'jp.qa@test.com',
-    };
-    cy.startComecar(user);
+    preCadastro.startComecar('JP QA', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -13,17 +11,13 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And fill out the "name" and "email" fields
       And click on the "Continuar" button
     */
-    cy.verifyDataHeader(user);
+    preCadastro.verifyDataHeader('JP', 'jp.qa@test.com');
     /**
      Then the user should see the "Olá, 'firstName'" and "  " text  in the header of the page
      */
   });
   it("Should pré-cadastro successfully when the user fills out the form with valid credentials by clicking on the 'Agendar um horário' button", () => {
-    const user = {
-      fullname: 'Juliano Peres',
-      email: 'jp.qa@test.com',
-    };
-    cy.startAgendar(user);
+    preCadastro.startAgendar('JP QA', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Agendar" button
@@ -31,13 +25,13 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And fill out the "name" and "email" fields
       And click on the "Continuar" button
     */
-    cy.verifyDataHeader(user);
+    preCadastro.verifyDataHeader('JP', 'jp.qa@test.com');
     /**
      Then the user should see the "Olá, 'firstName'" and "  " text  in the header of the page
      */
   });
-  it.only('The fields "name" and "email" should displays alert messages after submit, when the fields were empty', () => {
-    cy.startComecar();
+  it('The fields "name" and "email" should displays alert messages after submit, when the fields were empty', () => {
+    preCadastro.startComecar();
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -45,17 +39,16 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And keep empty the "name" and "email" fields
       And click on the "Continuar" button
     */
-    cy.NameEmailAlertMsg('Nome Completo', 'O campo nome é obrigatório.');
+    preCadastro.NameEmailAlertMsg(
+      'Nome Completo',
+      'O campo nome é obrigatório.'
+    );
     // Then the user should see the alert-msg "O campo nome é obrigatório."
-    cy.NameEmailAlertMsg('E-mail', 'O campo e-mail é obrigatório.');
+    preCadastro.NameEmailAlertMsg('E-mail', 'O campo e-mail é obrigatório.');
     // Then the user should see the alert-msg "O campo e-mail é obrigatório."
   });
   it('"Cancel" button: Should cancel the pré-cadastro an return to the homepage', () => {
-    const user = {
-      fullname: 'Juliano Peres',
-      email: 'jp.qa@test.com',
-    };
-    cy.startCancelar(user);
+    preCadastro.startCancelForm('JP QA', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -65,7 +58,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
     */
   });
   it('"Name" field: Should not accept numbers', () => {
-    cy.startComecar('123 123', 'jp.qa@test.com');
+    preCadastro.startComecar('123 123', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -74,11 +67,11 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And valid "email"
       And click on the "Continuar" button
     */
-    cy.NameEmailAlertMsg('Nome Completo', 'O campo nome é inválido.');
+    preCadastro.NameEmailAlertMsg('Nome Completo', 'O campo nome é inválido.');
     // Then the user should see the alert-msg "O campo nome é inválido."
   });
   it('"Name" field: Should not accept special characters', () => {
-    cy.startComecar('@#$ %&*', 'jp.qa@test.com');
+    preCadastro.startComecar('@#$ %&*', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -87,15 +80,11 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And valid "email"
       And click on the "Continuar" button
     */
-    cy.NameEmailAlertMsg('Nome Completo', 'O campo nome é inválido.');
+    preCadastro.NameEmailAlertMsg('Nome Completo', 'O campo nome é inválido.');
     // Then the user should see the alert-msg "O campo nome é inválido."
   });
-  it('"Name" field: Should display an alert message when typed only the first name', () => {
-    const user = {
-      fullname: 'Juliano',
-      email: 'jp.qa@test.com',
-    };
-    cy.startComecar(user);
+  it('"Name" field: Should display a validation message when typed only the first name', () => {
+    preCadastro.startComecar('JP', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -104,15 +93,14 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And valid "email"
       And click on the "Continuar" button
     */
-    cy.NameEmailAlertMsg('Nome Completo', 'Informe seu nome completo.');
+    preCadastro.NameEmailAlertMsg(
+      'Nome Completo',
+      'Informe seu nome completo.'
+    );
     // Then the user should see the alert-msg "Informe seu nome completo."
   });
   it('"E-mail" field: Should display a validation message when typed invalid data', () => {
-    const user = {
-      fullname: 'Juliano Peres',
-      email: 'www.test.com',
-    };
-    cy.startComecar(user);
+    preCadastro.startComecar('JP QA', 'jp.qa.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -121,7 +109,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       And invalid "email"
       And click on the "Continuar" button
     */
-    cy.NameEmailAlertMsg('E-mail', 'O e-mail inserido é inválido.');
+    preCadastro.NameEmailAlertMsg('E-mail', 'O e-mail inserido é inválido.');
     // Then the user should see the alert-msg "O e-mail inserido é inválido."
   });
 });
