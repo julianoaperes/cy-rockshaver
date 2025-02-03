@@ -49,7 +49,7 @@ Cypress.Commands.add('preCadastroAgendar', (user) => {
 });
 // ---------------------------------------
 // * This command cancel the register.
-Cypress.Commands.add('startCancelar', (user) => {
+Cypress.Commands.add('preCadastroCancelar', (user) => {
   cy.visit('/'); // Given the user accesses this link
   cy.get('a[href = "pre-cadastro"]').click(); // When the user clicks on the "Começar" button
   cy.get('form h2').should('have.text', 'Seus dados'); // Then the user should see the "Seus dados" form

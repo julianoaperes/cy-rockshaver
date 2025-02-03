@@ -74,9 +74,9 @@ export default {
 
     setupNodeEvents(on, config) {
       // Sets up Node.js event listeners for Cypress tests. `on` is used to listen to events, and `config` is the current test configuration.
+      configurePlugin(on); // mongodb
       on('before:spec', (spec) => {
         // Listens for the 'before:spec' event, which is triggered before each spec file runs.
-        configurePlugin(on); // mongodb
         const dynamicPath = path.resolve(
           resultsDir,
           `${path.basename(spec.fileName, path.extname(spec.fileName))}.xml`
