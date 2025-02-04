@@ -23,7 +23,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       fullname: 'Juliano Peres',
       email: 'jp.qa@test.com',
     };
-    cy.startAgendar(user);
+    cy.preCadastroAgendar(user);
     /** 
       Given the user accesses the home page
       When the user clicks on the "Agendar" button
@@ -55,7 +55,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       fullname: 'Juliano Peres',
       email: 'jp.qa@test.com',
     };
-    cy.startCancelar(user);
+    cy.preCadastroCancelar(user);
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -65,7 +65,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
     */
   });
   it('"Name" field: Should not accept numbers', () => {
-    cy.startComecar('123 123', 'jp.qa@test.com');
+    cy.preCadastroComecar('123 123', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -78,7 +78,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
     // Then the user should see the alert-msg "O campo nome é inválido."
   });
   it('"Name" field: Should not accept special characters', () => {
-    cy.startComecar('@#$ %&*', 'jp.qa@test.com');
+    cy.preCadastroComecar('@#$ %&*', 'jp.qa@test.com');
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -95,7 +95,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       fullname: 'Juliano',
       email: 'jp.qa@test.com',
     };
-    cy.startComecar(user);
+    cy.preCadastroComecar(user);
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button
@@ -112,7 +112,7 @@ describe('Validation of "Pré-cadastro" scenarios', () => {
       fullname: 'Juliano Peres',
       email: 'www.test.com',
     };
-    cy.startComecar(user);
+    cy.preCadastroComecar(user);
     /** 
       Given the user accesses the home page
       When the user clicks on the "Começar" button

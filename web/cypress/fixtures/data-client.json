@@ -1,0 +1,15 @@
+{
+  "success": {
+    "data": "25/12/2024",
+    "dia": "25",
+    "hora": "10:00",
+    "servico": {
+      "codigo": 3,
+      "descricao": "Combo"
+    },
+    "user": {
+      "fullname": "Juliano Peres",
+      "email": "jp.teste@qa.com"
+    }
+  }
+}
