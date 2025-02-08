@@ -9,11 +9,11 @@ describe('Appointment: Validation of its scenarios', () => {
     }).then((result) => {
       cy.log(result); // Will return 'Collection dropped' or the error object if collection doesn’t exist. Will not fail the test
     });
+    // Intercept the request to get the calendar
     cy.intercept('GET', 'http://localhost:3333/api/calendario', {
       statusCode: 200,
       body: calendar,
     }).as('getCalendar');
-    // Datas for the test
     cy.preCadastroComecar(agenda.user);
     cy.verifyDataHeader(agenda.user);
     cy.contains('a', 'Agendar um horário').click();
