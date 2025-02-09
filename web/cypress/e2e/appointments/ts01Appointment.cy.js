@@ -30,25 +30,7 @@ describe('Appointment: Validation of its scenarios', () => {
       cy.log(result); // Will return 'Collection dropped' or the error object if collection doesn’t exist. Will not fail the test
     });
     const agenda = dataClient.slotScheduled; // Get the data from the client
-
-    cy.api({
-      method: 'POST',
-      url: 'http://localhost:3333/api/agendamentos',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer 3a8a9b8fae87baf503e7c5fe5b97fd72',
-      },
-      body: {
-        codigoServico: agenda.service.id,
-        data: agenda.date,
-        emailCliente: agenda.user.email,
-        hora: agenda.time,
-        matricula: agenda.professional.id,
-        nomeCliente: agenda.user.fullName,
-      },
-    }).then((response) => {
-      expect(response.status).to.eq(201);
-    });
+    cy.appointmentApi(agenda); // Create the appointment
     // Intercept the request to get the calendar
     cy.intercept('GET', 'http://localhost:3333/api/calendario', {
       statusCode: 200,
@@ -60,7 +42,7 @@ describe('Appointment: Validation of its scenarios', () => {
     cy.selectServiceProvider(agenda.professional.name);
     cy.selectService(agenda.service.description);
     cy.selectDay(agenda.day);
-    cy.get('[slot="14:00 - ocupado"]')
+    cy.get(`[slot="${agenda.time} - ocupado"]`)
       .should('be.visible')
       .find('svg')
       .should('be.visible');

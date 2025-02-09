@@ -19,6 +19,28 @@ import './actions/preregister';
 import './actions/appointments.action';
 
 //! ******  CUSTOM COMMANDS ******
+
+Cypress.commands.add('appointmentApi', (agenda) => {
+  cy.api({
+    method: 'POST',
+    url: 'http://localhost:3333/api/agendamentos',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer 3a8a9b8fae87baf503e7c5fe5b97fd72',
+    },
+    body: {
+      codigoServico: agenda.service.id,
+      data: agenda.date,
+      emailCliente: agenda.user.email,
+      hora: agenda.time,
+      matricula: agenda.professional.id,
+      nomeCliente: agenda.user.fullName,
+    },
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+  });
+});
+
 // -------------------------------------------------------------
 //! ***** ALLOW CYPRESS RUN THE TESTS EVEN WITH ERROR *****
 Cypress.on('uncaught:exception', (err, runnable) => {
