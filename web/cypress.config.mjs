@@ -48,15 +48,10 @@ if (!fs.existsSync(resultsDir)) {
 
 console.log(`Results directory created: ${resultsDir}`);
 // Logs the creation of the results directory for debugging purposes.
-
-export default {
+import { defineConfig } from 'cypress';
+export default defineConfig({
   // Export the Cypress configuration object.
-  env: {
-    mongodb: {
-      uri: 'mongodb://cypress:skills@localhost:27017',
-      database: 'rockshaver',
-    },
-  },
+
   e2e: {
     // Defines the End-to-End (E2E) testing configuration.
     baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost:3000/',
@@ -93,5 +88,12 @@ export default {
         // Updates the reporter's `mochaFile` option with the dynamic path.
       });
     },
+    env: {
+      mongodb: {
+        uri: 'mongodb://cypress:skills@localhost:27017',
+        database: 'rockshaver',
+      },
+      snapshotOnly: false,
+    },
   },
-};
+});

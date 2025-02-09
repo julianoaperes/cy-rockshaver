@@ -1,15 +1,36 @@
 {
   "success": {
-    "data": "25/12/2024",
-    "dia": "25",
-    "hora": "10:00",
-    "servico": {
-      "codigo": 3,
-      "descricao": "Combo"
+    "date": "25/12/2024",
+    "day": "25",
+    "time": "10:00",
+    "professional": {
+      "name": "Courtney",
+      "id": "1001"
+    },
+    "service": {
+      "id": 3,
+      "description": "Combo"
     },
     "user": {
       "fullname": "Juliano Peres",
       "email": "jp.teste@qa.com"
+    }
+  },
+  "slotScheduled": {
+    "date": "27/12/2024",
+    "day": "27",
+    "time": "14:00",
+    "professional": {
+      "name": "Tina",
+      "id": "1003"
+    },
+    "service": {
+      "id": 1,
+      "description": "Corte"
+    },
+    "user": {
+      "fullname": "Tomas Teste",
+      "email": "tomas.teste@qa.com"
     }
   }
 }
